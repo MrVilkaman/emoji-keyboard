@@ -2,12 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			  android:layout_width="match_parent"
 			  android:layout_height="match_parent"
+			  android:gravity="bottom"
 			  android:orientation="vertical">
 
-	<br.com.instachat.emojilibrary.model.layout.EmojiEditText
-		android:id="@+id/edit_text"
+	<LinearLayout
+		android:background="#bbb"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"/>
+		android:layout_height="wrap_content"
+		android:orientation="horizontal">
+
+
+		<br.com.instachat.emojilibrary.model.layout.EmojiEditText
+			android:id="@+id/edit_text"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"/>
+
+		<ImageView
+			android:scaleType="fitCenter"
+			android:padding="8dp"
+			android:layout_gravity="center"
+			android:src="@drawable/input_emoji"
+			android:id="@+id/emoji_icon_btn"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"/>
+	</LinearLayout>
+
 
 	<br.com.instachat.emojilibrary.model.layout.EmojiKeyboardLayout
 		android:id="@+id/emoji_keyboard_view"
