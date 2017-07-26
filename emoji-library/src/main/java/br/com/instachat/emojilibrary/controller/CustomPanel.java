@@ -60,6 +60,8 @@ public class CustomPanel {
 				} else {
 					CustomPanel.this.closeCurtain();
 					CustomPanel.this.showEmojiKeyboard(0);
+					CustomPanel.this.imageView.setImageResource(R.drawable.ic_keyboard_grey600_24dp);
+
 				}
 			}
 		});
@@ -75,8 +77,9 @@ public class CustomPanel {
 				if (mOnSoftKeyboardListener != null) {
 					mOnSoftKeyboardListener.onSoftKeyboardDisplay();
 				}
-
-				if (!CustomPanel.this.isEmojiKeyboardVisible) {
+				if (CustomPanel.this.isEmojiKeyboardVisible) {
+					CustomPanel.this.imageView.setImageResource(R.drawable.input_emoji);
+				} else {
 					final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 					scheduler.schedule(new Runnable() {
 						@Override
@@ -134,7 +137,6 @@ public class CustomPanel {
 				e.printStackTrace();
 			}
 		}
-		CustomPanel.this.imageView.setImageResource(R.drawable.ic_keyboard_grey600_24dp);
 		CustomPanel.this.isEmojiKeyboardVisible = Boolean.TRUE;
 		CustomPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout()
 				.setVisibility(LinearLayout.VISIBLE);
