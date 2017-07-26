@@ -29,6 +29,7 @@ public class CustomPanel {
 	private LinearLayout mCurtain;
 
 	private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
+	private EmojiEditText.OnSoftKeyboardListener mOnSoftKeyboardListener;
 
 	// CONSTRUCTOR
 	public CustomPanel(AppCompatActivity activity, EmojiEditText emojiEditText,
@@ -73,6 +74,10 @@ public class CustomPanel {
 		this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
 			@Override
 			public void onSoftKeyboardDisplay() {
+				if (mOnSoftKeyboardListener != null) {
+					mOnSoftKeyboardListener.onSoftKeyboardDisplay();
+				}
+
 				if (!CustomPanel.this.isEmojiKeyboardVisible) {
 					final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 					scheduler.schedule(new Runnable() {
@@ -95,6 +100,9 @@ public class CustomPanel {
 
 			@Override
 			public void onSoftKeyboardHidden() {
+				if (mOnSoftKeyboardListener != null) {
+					mOnSoftKeyboardListener.onSoftKeyboardHidden();
+				}
 				if (CustomPanel.this.isEmojiKeyboardVisible) {
 					CustomPanel.this.closeCurtain();
 					CustomPanel.this.hideEmojiKeyboard(200);
@@ -102,6 +110,10 @@ public class CustomPanel {
 			}
 		});
 
+	}
+
+	public void addOnSoftKeyboardListener(EmojiEditText.OnSoftKeyboardListener mOnSoftKeyboardListener) {
+		this.mOnSoftKeyboardListener = mOnSoftKeyboardListener;
 	}
 
 	public boolean handleBackPressed() {
