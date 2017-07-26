@@ -1,19 +1,13 @@
 package br.com.instachat.emojilibrary.controller;
 
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import java.util.concurrent.Executors;

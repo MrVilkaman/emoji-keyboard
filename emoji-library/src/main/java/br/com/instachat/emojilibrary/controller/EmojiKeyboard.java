@@ -2,6 +2,7 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import br.com.instachat.emojilibrary.R;
 import br.com.instachat.emojilibrary.adapter.EmojiTabAdapter;
 import br.com.instachat.emojilibrary.model.Emoji;
 import br.com.instachat.emojilibrary.model.OnEmojiClickListener;
-import br.com.instachat.emojilibrary.model.layout.EmojiCompatActivity;
 import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
 
 /**
@@ -24,7 +24,7 @@ import br.com.instachat.emojilibrary.model.layout.EmojiEditText;
 public class EmojiKeyboard implements OnEmojiClickListener {
     private static final String TAG = "EmojiKeyboard";
 
-    private EmojiCompatActivity mActivity;
+    private AppCompatActivity mActivity;
 
     private ImageView[] mTabIcons = new ImageView[6];
     private RelativeLayout mEmojiKeyboardLayout;
@@ -32,7 +32,7 @@ public class EmojiKeyboard implements OnEmojiClickListener {
     private ImageView mBackspace;
 
     // CONSTRUCTOR
-    public EmojiKeyboard(EmojiCompatActivity activity, EmojiEditText input) {
+    public EmojiKeyboard(AppCompatActivity activity, EmojiEditText input) {
         this.mInput = input;
         this.mActivity = activity;
         this.mEmojiKeyboardLayout = (RelativeLayout) mActivity.findViewById(R.id.emoji_keyboard);
@@ -40,8 +40,14 @@ public class EmojiKeyboard implements OnEmojiClickListener {
         this.setBackspaceBehaviour();
     }
 
+    public void hideTabs(){
+        final SmartTabLayout viewPagerTab = (SmartTabLayout) mActivity.findViewById(R.id.emoji_tabs);
+        viewPagerTab.setVisibility(View.GONE);
+    }
+
     // INTIALIZATIONS
     private void initEmojiKeyboardViewPager() {
+        hideTabs();
         final EmojiTabAdapter adapter = new EmojiTabAdapter(mActivity.getSupportFragmentManager());
         adapter.setOnEmojiClickListener(this);
         final ViewPager viewPager = (ViewPager) mActivity.findViewById(R.id.emoji_viewpager);

@@ -3,6 +3,7 @@ package br.com.instachat.emojilibrary.model.layout;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
@@ -45,7 +46,7 @@ public class EmojiKeyboardLayout extends LinearLayout {
         curtain.setVisibility(LinearLayout.INVISIBLE);
     }
 
-    public void prepareKeyboard (EmojiCompatActivity activity, EmojiEditText input) {
+    public void prepareKeyboard(AppCompatActivity activity, EmojiEditText input) {
         new EmojiKeyboard(activity, input);
     }
 }
