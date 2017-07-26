@@ -139,7 +139,7 @@ public class CustomPanel {
 		CustomPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout()
 				.setVisibility(LinearLayout.VISIBLE);
 		if (mOnSoftKeyboardListener != null) {
-			mOnSoftKeyboardListener.onSoftKeyboardHidden();
+			mOnSoftKeyboardListener.onSoftKeyboardDisplay();
 		}
 	}
 
