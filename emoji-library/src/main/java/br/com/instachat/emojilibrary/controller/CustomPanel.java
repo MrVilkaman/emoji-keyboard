@@ -138,6 +138,9 @@ public class CustomPanel {
 		CustomPanel.this.isEmojiKeyboardVisible = Boolean.TRUE;
 		CustomPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout()
 				.setVisibility(LinearLayout.VISIBLE);
+		if (mOnSoftKeyboardListener != null) {
+			mOnSoftKeyboardListener.onSoftKeyboardHidden();
+		}
 	}
 
 	private void hideEmojiKeyboard(int delay) {
