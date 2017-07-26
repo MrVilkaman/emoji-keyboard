@@ -2,7 +2,6 @@ package br.com.instachat.emojilibrary.controller;
 
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.text.InputType;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -69,8 +68,7 @@ public class CustomPanel {
 	}
 
 	private void setInputConfig() {
-
-		mInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+//		mInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 		this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
 			@Override
 			public void onSoftKeyboardDisplay() {
@@ -117,6 +115,9 @@ public class CustomPanel {
 	}
 
 	public boolean handleBackPressed() {
+		if (mOnSoftKeyboardListener != null) {
+			mOnSoftKeyboardListener.onSoftKeyboardHidden();
+		}
 		if (CustomPanel.this.isEmojiKeyboardVisible) {
 			CustomPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
 			CustomPanel.this.hideEmojiKeyboard(0);
@@ -172,7 +173,4 @@ public class CustomPanel {
 		this.mInput.setText(text);
 	}
 
-	public interface OnBackPressedListener {
-		Boolean onBackPressed();
-	}
 }
