@@ -51,6 +51,7 @@ public class EmojiKeyboard implements OnEmojiClickListener {
         adapter.setOnEmojiClickListener(this);
         final ViewPager viewPager = (ViewPager) mActivity.findViewById(R.id.emoji_viewpager);
         viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(1);
 
         final SmartTabLayout viewPagerTab = (SmartTabLayout) mActivity.findViewById(R.id.emoji_tabs);
 

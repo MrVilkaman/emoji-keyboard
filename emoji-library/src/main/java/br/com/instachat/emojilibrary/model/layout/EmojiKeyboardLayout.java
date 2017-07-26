@@ -6,17 +6,14 @@ import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import br.com.instachat.emojilibrary.R;
-import br.com.instachat.emojilibrary.controller.EmojiKeyboard;
 
 /**
  * Created by edgar on 23/02/2016.
  */
 public class EmojiKeyboardLayout extends LinearLayout {
 
-    private EmojiKeyboard emojiKeyboard;
 
     public EmojiKeyboardLayout(Context context) {
         super(context);
@@ -43,9 +40,9 @@ public class EmojiKeyboardLayout extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.rsc_emoji_keyboard, this, true);
-        this.findViewById(R.id.emoji_keyboard).setVisibility(RelativeLayout.VISIBLE);
-        LinearLayout curtain = (LinearLayout) this.findViewById(R.id.curtain);
-        curtain.setVisibility(LinearLayout.INVISIBLE);
+//        this.findViewById(R.id.emoji_keyboard).setVisibility(RelativeLayout.VISIBLE);
+//        LinearLayout curtain = (LinearLayout) this.findViewById(R.id.curtain);
+//        curtain.setVisibility(LinearLayout.INVISIBLE);
     }
 
 
